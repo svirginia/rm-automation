@@ -1,0 +1,36 @@
+{
+  "webDriver": {
+    "driverType": "browser",
+    "browser": "chrome",
+    "implicitWaitTime": "10",
+    "explicitWaitTime": "30",
+    "waitSleepTime": "20",
+    "desiredCapabilities": {
+      "browser": "firefox",
+      "browser_version": "39",
+      "os": "Windows",
+      "os_version": "7",
+      "resolution": "1024x768",
+      "browserstack.debug": "false"
+    },
+    "remoteDriverSettings": {
+      "remoteUser": "virginia",
+      "remoteAutomateKey": "ggggMetkUypH3y"
+    }
+  },
+  "GeneralSettings": {
+    "adminURL": "https://localhost:4040/admin",
+    "tableURL": "https://localhost:4040/tablet",
+    "rmServiceURL": "https://localhost:4040"
+  },
+  "Credentials": {
+    "valid": {
+      "userName": "admin",
+      "password": "Control123"
+    },
+    "invalid": {
+      "userName": "adminx",
+      "password": "Control123x"
+    }
+  }
+}
