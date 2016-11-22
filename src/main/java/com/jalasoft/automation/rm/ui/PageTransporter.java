@@ -5,6 +5,7 @@ package com.jalasoft.automation.rm.ui;
  */
 public class PageTransporter {
     private static PageTransporter instance;
+    public static String baseTabletURL;
 
     public static PageTransporter getInstance() {
         if (instance == null) {
