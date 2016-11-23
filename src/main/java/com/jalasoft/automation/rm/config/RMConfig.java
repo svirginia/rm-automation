@@ -36,4 +36,12 @@ public class RMConfig implements AutomationAppSettings {
     public WebDriverConfig getWebDriverConfig() {
         return this.webDriverConfig;
     }
+
+    public String getAdminUrl() {
+        return (jsonConfigFileReader.getConfigValue("GeneralSettings", "adminURL")).toString();
+    }
+
+    public UserCredentialsConfig getCredentialsConfig() {
+        return this.credentialsConfig;
+    }
 }

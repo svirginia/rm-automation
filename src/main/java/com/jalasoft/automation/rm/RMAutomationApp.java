@@ -12,14 +12,14 @@ import org.apache.log4j.PropertyConfigurator;
  * Created by virginia sanabria on 11/21/2016.
  */
 public class RMAutomationApp implements AutomationApp {
-    private static AutomationApp instance = null;
+    private static RMAutomationApp instance = null;
     private Logger log = Logger.getLogger(getClass());
     private RMConfig config;
     private TestSetupManager setupManager;
-//    private boolean initialized; //TODO why
+    private boolean initialized; //TODO why
 
     private RMAutomationApp() {
-//        this.initialized = false; //TODO why
+        this.initialized = false; //TODO why
         this.initialize();
     }
 
@@ -30,7 +30,7 @@ public class RMAutomationApp implements AutomationApp {
         PageTransporter.baseTabletURL = this.config.getTableUrl(); //TODO implement
     }
 
-    public static AutomationApp getInstance() {
+    public static RMAutomationApp getInstance() {
         if (instance == null) {
             instance = new RMAutomationApp();
         }
@@ -40,13 +40,28 @@ public class RMAutomationApp implements AutomationApp {
     @Override
     public void startUp() throws Exception {
         WebDriverManager.getInstance().initializeWebDriver(this.config.getWebDriverConfig());
-//        this.initialized = true;
+        this.initialized = true;
     }
 
     @Override
     public void shutDown() throws Exception {
         this.setupManager.finalizeExecution();
         WebDriverManager.getInstance().quitDriver();
-//        this.initialized = false;
+        this.initialized = false;
+    }
+
+    public static void setupFramework() {
+        RMAutomationApp app = getInstance();
+        if (!app.initialized) {
+            try {
+                app.startUp();
+            } catch (Exception ex) {
+                app.log.error(String.format("Exception initializing framework: %s", ex.getMessage()));
+            }
+        }
+    }
+
+    public RMConfig getConfig() {
+        return this.config;
     }
 }

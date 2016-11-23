@@ -51,4 +51,12 @@ public class UserCredentialsConfig implements CredentialsConfig {
             this.credentialsByType.put(type, userCredentials);
         }
     }
+
+    public UserCredentials getCredentialsByUsername(String userName) {
+        UserCredentials result = null;
+        if (this.credentialsMapByUserName.containsKey(userName)) {
+            result = this.credentialsMapByUserName.get(userName);
+        }
+        return result;
+    }
 }

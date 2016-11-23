@@ -1,7 +1,7 @@
 {
   "webDriver": {
     "driverType": "browser",
-    "browser": "chrome",
+    "browser": "firefox",
     "implicitWaitTime": "10",
     "explicitWaitTime": "30",
     "waitSleepTime": "20",
