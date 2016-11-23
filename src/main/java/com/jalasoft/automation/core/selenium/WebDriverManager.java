@@ -72,8 +72,8 @@ public class WebDriverManager {
 
     private void setupDriverTimeouts() {
         log.info(String.format("initializing driver timeouts implicit wait time:{%d}, explicit wait time:{%d} ", this.implicitWaitTime, this.explicitWaitTime));
-        webDriver.manage().window().maximize();
-        webDriver.manage().timeouts().implicitlyWait(this.implicitWaitTime, TimeUnit.SECONDS);
+        this.webDriver.manage().window().maximize();
+        this.webDriver.manage().timeouts().implicitlyWait(this.implicitWaitTime, TimeUnit.SECONDS);
         webDriverWait = new WebDriverWait(webDriver, this.explicitWaitTime, this.waitSleepTime);
     }
 
@@ -97,7 +97,7 @@ public class WebDriverManager {
         DesiredCapabilities capabilities = this.getDesiredCapabilities(webDriverConfig);
         switch (this.browser.toLowerCase()) {
             case "firefox":
-                webDriver = new FirefoxDriver(capabilities);
+                this.webDriver = new FirefoxDriver(capabilities);
                 break;
             case "chrome":
                 ChromeDriverManager.getInstance().setup();

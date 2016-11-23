@@ -1,7 +1,7 @@
 Feature: CRUD locations
   @location1
   Scenario: Create a location
-    Given I logged with "valid" account in admin rm site
+    Given I logged with "valid" credential in admin rm site
       And I go to email servers page
       And I add "dev" email server
     When I go to locations page
